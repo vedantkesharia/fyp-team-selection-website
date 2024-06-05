@@ -1,25 +1,33 @@
-"use client"
+"use client";
 import { Inter } from "next/font/google";
-import { usePathname } from "next/navigation"; 
+import { usePathname } from "next/navigation";
 import "./globals.css";
-import Navbar from "@/components/components/navbar";
+import { ThemeProvider } from "@/providers/theme-provider";
+import NavBar from "@/components/NavBar";
+
 const inter = Inter({ subsets: ["latin"] });
 
 export default function RootLayout({ children }) {
-  const { pathname } = usePathname();
-
   return (
     <html lang="en">
       <body className={inter.className}>
-        <div className="bg-[radial-gradient(circle_500px_at_50%_200px,#C9EBFF,transparent)]">
-          <div>
-            {
-              (pathname === "/admin-dashboard" || pathname === "/password/") ? null :
-              <Navbar />
-            }
-          </div>
-          {children}
-        </div>
+        <>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            <div className="bg-themebackground flex flex-col flex-1 h-screen items-center overflow-y-auto">
+              <header className="sticky top-0 w-full !pl-[0.8rem] !pr-[0.8rem] md:!pl-[1.5rem] md:!pr-[1.5rem] z-10 flex justify-center">
+                <NavBar />
+              </header>
+              <main className="flex-1 max-w-[1440px] w-full pl-[0.8rem] pr-[0.8rem] md:!pl-[1.5rem] md:pr-[1.5rem]">
+                {children}
+              </main>
+            </div>
+          </ThemeProvider>
+        </>
       </body>
     </html>
   );
