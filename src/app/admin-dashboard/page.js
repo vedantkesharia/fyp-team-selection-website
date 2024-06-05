@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from "@/components/ui/table";
+import { Toaster, toast } from 'sonner';
 
 const initialData = [
   { id: 1, leader: "Vedant Kesharia", members: "Ethan Flores, Ava Gutierrez, Noah Jimenez" },
@@ -27,14 +28,20 @@ export default function Component() {
     setFilteredData(filtered);
   }, [searchQuery]);
 
+  const handleClick = () => {
+    toast.info('Downloading Excel file...')
+  };
+
   return (
     <div className="container mx-auto px-4 py-8">
       <div className="flex flex-col space-y-4">
         <div className="flex justify-between items-center">
           <h1 className="text-2xl font-bold">Project Teams</h1>
+          <Toaster position="bottom-left" richColors/>
           <Button
             className="rounded-xl bg-black border dark:border-white border-transparent text-white text-sm hover:bg-gray-600 hover:text-white"
             variant="outline"
+            onClick={handleClick}
           >
             <DownloadIcon className="mr-2 h-4 w-4" /> Export to Excel
           </Button>

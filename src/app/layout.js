@@ -12,12 +12,10 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={inter.className}>
         <div className="bg-[radial-gradient(circle_500px_at_50%_200px,#C9EBFF,transparent)]">
-          <div>
             {
               (pathname === "/admin-dashboard" || pathname === "/password/") ? null :
               <Navbar />
             }
-          </div>
           {children}
         </div>
       </body>
