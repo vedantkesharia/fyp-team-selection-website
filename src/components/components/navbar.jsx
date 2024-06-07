@@ -1,6 +1,5 @@
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
-import { ModeToggle } from "@/components/ui/mode-toggle"
 
 export default function Navbar() {
   return (
@@ -35,7 +34,7 @@ export default function Navbar() {
           >
             Team Selection
           </Link>
-          <ModeToggle/>
+
         </nav>
         <Button variant="outline" size="icon" className="md:hidden">
           <MenuIcon className="h-6 w-6" />
