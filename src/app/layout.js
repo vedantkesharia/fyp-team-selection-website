@@ -6,6 +6,7 @@ import "./globals.css";
 import Navbar from "@/components/components/navbar";
 const inter = Inter({ subsets: ["latin"] });
 
+
 export default function RootLayout({ children }) {
   const { pathname } = usePathname();
 
