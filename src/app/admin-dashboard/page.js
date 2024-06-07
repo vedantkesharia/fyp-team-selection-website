@@ -31,7 +31,7 @@ export default function Component() {
     <div className="container mx-auto px-4 py-8">
       <div className="flex flex-col space-y-4">
         <div className="flex justify-between items-center">
-          <h1 className="text-md mr-4 md:text-2xl font-bold">Project Teams</h1>
+          <h1 className="text-xl mr-4 md:text-2xl font-bold">Project Teams</h1>
           <Button
             className="rounded-xl bg-black border dark:border-white border-transparent text-white text-sm hover:bg-gray-600 hover:text-white"
             variant="outline"
