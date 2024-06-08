@@ -1,53 +1,52 @@
-// models/User.js
-import { Schema, model, models } from 'mongoose';
-import mongoose from 'mongoose';
+import mongoose, { Schema, model, models } from "mongoose";
+
 const userSchema = new Schema({
   name: {
     type: String,
-    required: true
+    required: true,
   },
   sapid: {
-    type: String,
+    type: Number,
     required: true,
-    unique: true
+    unique: true,
   },
   email: {
     type: String,
     required: true,
-    unique: true
+    unique: true,
   },
   phone: {
-    type: String,
-    required: true
+    type: Number,
+    required: true,
+    unique: true,
   },
   div: {
     type: String,
-    required: true
+    required: true,
+  },
+  rollno: {
+    type: String,
+    required: true,
   },
   password: {
     type: String,
-    required: true
-  },
-  flag: {
-    type: Boolean,
-    default: false
+    default: null,
   },
   team: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'Team'
+    ref: "Team",
   },
   user_type: {
     type: String,
-    enum: ['leader', 'normal'],
-    default: 'normal'
+    enum: ["leader", "normal"],
+    default: "normal",
   },
-  year:{
-    type: String,
-    enum: ['FE', 'SE', 'TE', 'BE'],
-    default: 'FE'
-  }
+  graduationyear: {
+    type: Number,
+    required: true,
+  },
 });
 
-const User = mongoose.model('User', userSchema);
+const User = models.User || model("User", userSchema);
 
-module.exports = User;
+export default User;

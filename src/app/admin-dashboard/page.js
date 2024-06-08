@@ -1,16 +1,48 @@
-"use client"
-import { useState, useEffect } from 'react';
+"use client";
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from "@/components/ui/table";
+import {
+  Table,
+  TableHeader,
+  TableRow,
+  TableHead,
+  TableBody,
+  TableCell,
+} from "@/components/ui/table";
+import CsvToJson from "@/components/CsvToJson";
 
 const initialData = [
-  { id: 1, leader: "Vedant Kesharia", members: "Ethan Flores, Ava Gutierrez, Noah Jimenez" },
-  { id: 2, leader: "Surabhi Waingankar", members: "Christopher Gonzalez, Sophia Ramirez, Daniel Morales" },
-  { id: 3, leader: "Ayush Upadhyay", members: "Mateo Mendoza, Isabella Reyes, Lucas Diaz" },
-  { id: 4, leader: "Sujal Choudhary", members: "Michael Brown, Emily Wilson, David Kim" },
-  { id: 5, leader: "Soham Patil", members: "Emma Ortiz, Jacob Dominguez, Olivia Santana" },
-  { id: 6, leader: "Isha Patade", members: "Mia Diaz, Lucas Reyes, Isabella Sanchez" },
+  {
+    id: 1,
+    leader: "Vedant Kesharia",
+    members: "Ethan Flores, Ava Gutierrez, Noah Jimenez",
+  },
+  {
+    id: 2,
+    leader: "Surabhi Waingankar",
+    members: "Christopher Gonzalez, Sophia Ramirez, Daniel Morales",
+  },
+  {
+    id: 3,
+    leader: "Ayush Upadhyay",
+    members: "Mateo Mendoza, Isabella Reyes, Lucas Diaz",
+  },
+  {
+    id: 4,
+    leader: "Sujal Choudhary",
+    members: "Michael Brown, Emily Wilson, David Kim",
+  },
+  {
+    id: 5,
+    leader: "Soham Patil",
+    members: "Emma Ortiz, Jacob Dominguez, Olivia Santana",
+  },
+  {
+    id: 6,
+    leader: "Isha Patade",
+    members: "Mia Diaz, Lucas Reyes, Isabella Sanchez",
+  },
 ];
 
 export default function Component() {
@@ -19,10 +51,11 @@ export default function Component() {
 
   useEffect(() => {
     const lowerCaseQuery = searchQuery.toLowerCase();
-    const filtered = initialData.filter(project =>
-      project.id.toString().includes(lowerCaseQuery) ||
-      project.leader.toLowerCase().includes(lowerCaseQuery) ||
-      project.members.toLowerCase().includes(lowerCaseQuery)
+    const filtered = initialData.filter(
+      (project) =>
+        project.id.toString().includes(lowerCaseQuery) ||
+        project.leader.toLowerCase().includes(lowerCaseQuery) ||
+        project.members.toLowerCase().includes(lowerCaseQuery)
     );
     setFilteredData(filtered);
   }, [searchQuery]);
@@ -32,19 +65,22 @@ export default function Component() {
       <div className="flex flex-col space-y-4">
         <div className="flex justify-between items-center">
           <h1 className="text-xl mr-4 md:text-2xl font-bold">Project Teams</h1>
-          <Button
-            className="rounded-xl bg-black border dark:border-white border-transparent text-white text-sm hover:bg-gray-600 hover:text-white"
-            variant="outline"
-          >
-            <DownloadIcon className="mr-2 h-4 w-4" /> Export to Excel
-          </Button>
+          <div className="flex items-center gap-3">
+            <Button
+              className="rounded-xl bg-black border dark:border-white border-transparent text-white text-sm hover:bg-gray-600 hover:text-white"
+              variant="outline"
+            >
+              <DownloadIcon className="mr-2 h-4 w-4" /> Export to Excel
+            </Button>
+            <CsvToJson />
+          </div>
         </div>
         <div className="flex justify-between items-center">
           <div className="flex space-x-2 w-full md:w-auto">
             <Input
               placeholder="Search projects..."
               value={searchQuery}
-              onChange={e => setSearchQuery(e.target.value)}
+              onChange={(e) => setSearchQuery(e.target.value)}
             />
           </div>
         </div>
@@ -57,7 +93,7 @@ export default function Component() {
             </TableRow>
           </TableHeader>
           <TableBody>
-            {filteredData.map(project => (
+            {filteredData.map((project) => (
               <TableRow key={project.id}>
                 <TableCell>{project.id}</TableCell>
                 <TableCell>{project.leader}</TableCell>

@@ -1,11 +1,11 @@
 // TypewriterEffectSmooth component
-import React from 'react';
-import { cn } from "../../lib/utils.js";
+import React from "react";
 import { motion, stagger } from "framer-motion";
 import { useEffect } from "react";
 import { useInView } from "react-intersection-observer";
+import { cn } from "@/lib/utils";
 export const TypewriterEffectSmooth = ({
-  words=[],
+  words = [],
   className,
   cursorClassName,
 }) => {
@@ -18,23 +18,23 @@ export const TypewriterEffectSmooth = ({
   });
 
   const [ref, inView] = useInView();
-useEffect(() => {
-  if (inView) {
-    animate(
-      "span",
-      {
-        display: "inline-block",
-        opacity: 1,
-        width: "fit-content",
-      },
-      {
-        duration: 0.3,
-        delay: stagger(0.1),
-        ease: "easeInOut",
-      }
-    );
-  }
-}, [inView]);
+  useEffect(() => {
+    if (inView) {
+      animate(
+        "span",
+        {
+          display: "inline-block",
+          opacity: 1,
+          width: "fit-content",
+        },
+        {
+          duration: 0.3,
+          delay: stagger(0.1),
+          ease: "easeInOut",
+        }
+      );
+    }
+  }, [inView]);
 
   const renderWords = () => {
     return (
@@ -104,9 +104,6 @@ useEffect(() => {
     </div>
   );
 };
-
-
-
 
 // "use client";
 

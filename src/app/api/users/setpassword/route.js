@@ -8,23 +8,20 @@ export async function POST(request) {
   try {
     await connect();
     const { sapid, password } = await request.json();
-    console.log(sapid);
-    console.log(password);
 
-    let user = await User.findOne({ sapid });
+    const salt = await bcrypt.genSalt(10);
+    const secPass = await bcrypt.hash(password, salt);
+
+    const user = await User.findOneAndUpdate(
+      { sapid },
+      { password: secPass },
+      { new: true }
+    );
+
     if (!user) {
       return NextResponse.json(
-        { status: 404 },
-        { error: "Please try to login with correct credentials" }
-      );
-    }
-
-    const passwordCompare = await bcrypt.compare(password, user.password);
-
-    if (!passwordCompare) {
-      return NextResponse.json(
-        { status: 404 },
-        { error: "Please try to login with correct credentials" }
+        { success: false, error: "User not found" },
+        { status: 404 }
       );
     }
 
@@ -35,6 +32,7 @@ export async function POST(request) {
     };
 
     const authToken = jwt.sign(data, process.env.NEXT_PUBLIC_JWT_SECRET);
+
     return NextResponse.json({ success: true, authToken });
   } catch (error) {
     console.error(error);
