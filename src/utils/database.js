@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 
 let isConnected = false;
 
-export async function connect() {
+async function connect() {
   if (isConnected) {
     return;
   }
@@ -32,4 +32,4 @@ export async function connect() {
   }
 }
 
-// export default connect;
+export default connect;
