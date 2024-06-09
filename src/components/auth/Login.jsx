@@ -97,7 +97,7 @@ const Login = ({ setShow, setIsOpen }) => {
           />
         </div>
         <div className="flex justify-center items-center gap-1">
-          <span>Don't have an account?</span>
+          <span>Don&apos;t have an account?</span>
           <span className="text-blue-500" onClick={() => setShow("signUp")}>
             SignUp
           </span>
