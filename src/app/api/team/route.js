@@ -1,5 +1,5 @@
 
-import Team from "../../../../models/Team";
+import Team from "../../../models/team.js";
 
 export async function POST(req) {
   try {
