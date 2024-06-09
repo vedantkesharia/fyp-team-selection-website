@@ -2,7 +2,7 @@ import User from "../../../../models/user";
 import { NextResponse } from "next/server";
 import bcrypt from "bcryptjs";
 import sendMail from "@/utils/sendMail";
-import connect from "@/utils/database";
+import connect from "../../../../utils/database";
 
 export async function POST(request) {
   try {
