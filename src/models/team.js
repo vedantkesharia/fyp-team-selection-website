@@ -1,6 +1,6 @@
 // models/Team.js
 import mongoose from 'mongoose';
-import { Schema, model } from 'mongoose';
+import { Schema, model, models } from 'mongoose';
 
 const teamSchema = new Schema({
   teamLeader: {
@@ -14,6 +14,6 @@ const teamSchema = new Schema({
   }]
 });
 
-const Team = mongoose.model('Team', teamSchema);
+const Team = models.Team || mongoose.model('Team', teamSchema);
 
-module.exports = Team;
+export default Team;
