@@ -25,7 +25,7 @@ export default function Main() {
       <div className="flex flex-col md:flex-row space-y-4 md:space-y-0 space-x-0 md:space-x-4 mt-8 md:mt-6">
         <div className="flex flex-col items-center ">
           <p className="text-lg md:text-xl lg:text-2xl text-black dark:text-white text-center ">
-            Final Year Project Team Selection. Meow Meow... I'm a cat. Lorem
+            Final Year Project Team Selection. Meow Meow... I am a cat. Lorem
             ipsum dolor sit amet consectetur adipisicing elit. Fugiat nostrum
             minus dolorem deserunt, dignissimos fuga.
           </p>
